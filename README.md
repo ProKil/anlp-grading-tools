@@ -4,7 +4,7 @@
 
 You'll need `docker` to use this repo. Visit the [official guide](https://docs.docker.com/get-started/) to get started. 
 
-After you have install `docker`, install the python package by 
+After installing `docker`, install the python package by 
 
 ```
 git clone https://github.com/ProKil/anlp-grading-tools
@@ -23,4 +23,4 @@ To evaluate your code, you'll need to change the environment variables in test.s
 
 ## Troubleshooting
 
-You may find writing files inside `ANLP_TMP_DIR` and `SCORE_DIR` requires permission. You can either use `sudo` or log into docker through `docker run -v FOLDER_TO_WRITE:/mnt -it --entrypoint /bin/bash anlp` and `cd /mnt` to write those files. 
+You may find writing files inside `ANLP_TMP_DIR` and `SCORE_DIR` requiring permission. You can either use `sudo` or log into docker through `docker run -v FOLDER_TO_WRITE:/mnt -it --entrypoint /bin/bash anlp` and `cd /mnt` to write those files. 
