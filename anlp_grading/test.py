@@ -13,44 +13,44 @@ execute_cli_timeout(
     '--train=/mnt/data/sst-train.txt '
     '--dev=/mnt/data/sst-dev.txt '
     '--test=/mnt/data/sst-test.txt '
-    '--dev_out=sst-dev-output.txt '
-    '--test_out=sst-test-output.txt ',
+    '--dev_out=/usr/src/app/sst-dev-output.txt '
+    '--test_out=/usr/src/app/sst-test-output.txt ',
     timeout=1200
 )
-sst_acc = compare_outputs(std="/mnt/data/sst-test.txt", result="/mnt/code/sst-test-output.txt")
+sst_acc = compare_outputs(std="/mnt/data/sst-test.txt", result="/usr/src/app/sst-test-output.txt")
 execute_cli_timeout(
     'cd /mnt/code && '
     'python3 /mnt/code/classifier_orig.py '
     '--train=/mnt/data/sst-train.txt '
     '--dev=/mnt/data/sst-dev.txt '
     '--test=/mnt/data/sst-test.txt '
-    '--dev_out=sst-dev-output-orig.txt '
-    '--test_out=sst-test-output-orig.txt ',
+    '--dev_out=/usr/src/app/sst-dev-output-orig.txt '
+    '--test_out=/usr/src/app/sst-test-output-orig.txt ',
     timeout=1200
 )
-sst_acc_orig = compare_outputs(std="/mnt/data/sst-test.txt", result="/mnt/code/sst-test-output-orig.txt")
+sst_acc_orig = compare_outputs(std="/mnt/data/sst-test.txt", result="/usr/src/app/sst-test-output-orig.txt")
 execute_cli_timeout(
     'cd /mnt/code && '
     'python3 /mnt/code/classifier.py '
     '--train=/mnt/data/cfimdb-train.txt '
     '--dev=/mnt/data/cfimdb-dev.txt '
     '--test=/mnt/data/cfimdb-test.txt '
-    '--dev_out=cfimdb-dev-output.txt '
-    '--test_out=cfimdb-test-output.txt ',
+    '--dev_out=/usr/src/app/cfimdb-dev-output.txt '
+    '--test_out=/usr/src/app/cfimdb-test-output.txt ',
     timeout=1200
 )
-cfimdb_acc = compare_outputs(std="/mnt/data/cfimdb-test-correctlabels.txt", result="/mnt/code/sst-test-output.txt")
+cfimdb_acc = compare_outputs(std="/mnt/data/cfimdb-test-correctlabels.txt", result="/usr/src/app/sst-test-output.txt")
 execute_cli_timeout(
     'cd /mnt/code && '
     'python3 /mnt/code/classifier_orig.py '
     '--train=/mnt/data/cfimdb-train.txt '
     '--dev=/mnt/data/cfimdb-dev.txt '
     '--test=/mnt/data/cfimdb-test.txt '
-    '--dev_out=cfimdb-dev-output.txt '
-    '--test_out=cfimdb-test-output-orig.txt ',
+    '--dev_out=/usr/src/app/cfimdb-dev-output.txt '
+    '--test_out=/usr/src/app/cfimdb-test-output-orig.txt ',
     timeout=1200
 )
-cfimdb_acc_orig = compare_outputs(std="/mnt/data/cfimdb-test-correctlabels.txt", result="/mnt/code/sst-test-output-orig.txt")
+cfimdb_acc_orig = compare_outputs(std="/mnt/data/cfimdb-test-correctlabels.txt", result="/usr/src/app/sst-test-output-orig.txt")
 
 print(sst_acc, sst_acc_orig, cfimdb_acc, cfimdb_acc_orig)
 

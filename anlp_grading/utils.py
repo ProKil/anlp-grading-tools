@@ -56,8 +56,11 @@ def execute_cli_timeout(cmd, timeout):
 def compare_outputs(std, result):
     try:
         same = []
-        for line1, line2 in zip(open(std), open(result)):
+        result_lines = open(result).readlines()
+        for idx, line1 in enumerate(open(std)):
+            line2 = result_lines[idx]
             same.append(1 if line1[0] == line2[0] else 0)
         return sum(same) / len(same)
     except Exception as e:
+        print(e)
         return 0
