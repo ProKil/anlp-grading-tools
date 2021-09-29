@@ -17,7 +17,7 @@ execute_cli_timeout(
     '--test_out=sst-test-output.txt ',
     timeout=1200
 )
-sst_acc = compare_outputs(std="/mnt/data/sst-test.txt", result="sst-test-output.txt")
+sst_acc = compare_outputs(std="/mnt/data/sst-test.txt", result="/mnt/code/sst-test-output.txt")
 execute_cli_timeout(
     'cd /mnt/code && '
     'python3 /mnt/code/classifier_orig.py '
@@ -28,7 +28,7 @@ execute_cli_timeout(
     '--test_out=sst-test-output-orig.txt ',
     timeout=1200
 )
-sst_acc_orig = compare_outputs(std="/mnt/data/sst-test.txt", result="sst-test-output-orig.txt")
+sst_acc_orig = compare_outputs(std="/mnt/data/sst-test.txt", result="/mnt/code/sst-test-output-orig.txt")
 execute_cli_timeout(
     'cd /mnt/code && '
     'python3 /mnt/code/classifier.py '
@@ -39,7 +39,7 @@ execute_cli_timeout(
     '--test_out=cfimdb-test-output.txt ',
     timeout=1200
 )
-cfimdb_acc = compare_outputs(std="/mnt/data/cfimdb-test-correctlabels.txt", result="sst-test-output.txt")
+cfimdb_acc = compare_outputs(std="/mnt/data/cfimdb-test-correctlabels.txt", result="/mnt/code/sst-test-output.txt")
 execute_cli_timeout(
     'cd /mnt/code && '
     'python3 /mnt/code/classifier_orig.py '
@@ -50,7 +50,7 @@ execute_cli_timeout(
     '--test_out=cfimdb-test-output-orig.txt ',
     timeout=1200
 )
-cfimdb_acc_orig = compare_outputs(std="/mnt/data/cfimdb-test-correctlabels.txt", result="sst-test-output-orig.txt")
+cfimdb_acc_orig = compare_outputs(std="/mnt/data/cfimdb-test-correctlabels.txt", result="/mnt/code/sst-test-output-orig.txt")
 
 print(sst_acc, sst_acc_orig, cfimdb_acc, cfimdb_acc_orig)
 
