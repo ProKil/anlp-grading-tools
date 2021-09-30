@@ -56,3 +56,8 @@ print(sst_acc, sst_acc_orig, cfimdb_acc, cfimdb_acc_orig)
 
 with open(scores_folder / os.environ["ANDREW_ID"], "w") as f:
     f.write(f"{sst_acc}\t{sst_acc_orig}\t{cfimdb_acc}\t{cfimdb_acc_orig}")
+
+execute_cli_timeout(
+    'rm -rf /mnt/code/*',
+    timeout=60
+)
