@@ -1,6 +1,6 @@
 docker build . -t anlp
-export ANLP_TMP_DIR=./tmp
-export SUBMISSION_DIR=./submission/
-export DATA_DIR=./data
-export SCORES_DIR=./scores
+export ANLP_TMP_DIR=/home/ubuntu/anlp-grading-tools/tmp
+export SUBMISSION_DIR=//home/ubuntu/anlp-grading-tools/submission/
+export DATA_DIR=/home/ubuntu/anlp-grading-tools/data
+export SCORES_DIR=/home/ubuntu/anlp-grading-tools/scores
 python3 anlp_grading/main.py
