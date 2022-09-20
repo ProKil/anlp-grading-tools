@@ -2,9 +2,13 @@ from pathlib import Path
 from utils import execute_cli_timeout, compare_outputs
 import os
 import time
+import torch
 data_folder = Path('/mnt/data')
 student_folder = Path('/mnt/code')
 scores_folder = Path('/mnt/scores')
+
+
+print(torch.cuda.is_available())
 
 print('Running setup.sh')
 
