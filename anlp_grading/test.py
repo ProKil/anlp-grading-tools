@@ -1,6 +1,7 @@
 from pathlib import Path
 from utils import execute_cli_timeout, compare_outputs
 import os
+import time
 data_folder = Path('/mnt/data')
 student_folder = Path('/mnt/code')
 scores_folder = Path('/mnt/scores')
@@ -11,6 +12,8 @@ print('Running setup.sh')
 #execute_cli_timeout('cp /mnt/data/classifier_orig.py /mnt/code/classifier_orig.py', timeout=600)
 
 print('Running pretrain')
+
+start = time.time()
 
 execute_cli_timeout(
     'cd /mnt/code && '
@@ -29,11 +32,16 @@ execute_cli_timeout(
     timeout=1800
 )
 
+end = time.time()
+print("Time elapased" ,end - start)
+
 sst_pretrain_dev_acc = compare_outputs(std="/mnt/data/sst-dev.txt", result="/mnt/scores/sst-dev-output.txt")
 sst_pretrain_test_acc = compare_outputs(std="/mnt/data/sst-test.txt", result="/mnt/scores/sst-test-output.txt")
 
 
 print('Running finetune')
+
+start = time.time()
 
 execute_cli_timeout(
     'cd /mnt/code && '
@@ -51,8 +59,14 @@ execute_cli_timeout(
     timeout=1800
 )
 
+end = time.time()
+print("Time elapased" ,end - start)
+
 sst_finetune_dev_acc = compare_outputs(std="/mnt/data/sst-dev.txt", result="/mnt/scores/sst-dev-output.txt")
 sst_finetune_test_acc = compare_outputs(std="/mnt/data/sst-test.txt", result="/mnt/scores/sst-test-output.txt")
+
+print('Running cfimdb finetune')
+start = time.time()
 
 #sst_acc_orig = compare_outputs(std="/mnt/data/sst-test.txt", result="/usr/src/app/sst-test-output-orig.txt")
 execute_cli_timeout(
@@ -71,8 +85,8 @@ execute_cli_timeout(
     timeout=1800
 )
 
-
-print('Running cfimdb finetune')
+end = time.time()
+print("Time elapased" ,end - start)
 
 cfimdb_finetune_dev_acc = compare_outputs(std="/mnt/data/cfimdb-dev.txt", result="/mnt/scores/cfimdb-dev-output.txt")
 # cfimdb_pretain_test_acc = compare_outputs(std="/mnt/data/sst-test.txt", result="/usr/src/app/sst-test-output.txt")
