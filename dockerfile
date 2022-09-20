@@ -18,4 +18,4 @@ RUN pip install numpy
 # RUN mkdir -p /mnt/scores && chown -R 777 /mnt/scores
 # USER $USER_ID
 CMD ["/anlp_grading/test.py"]
-ENTRYPOINT ["python"]
+ENTRYPOINT ["python3"]
