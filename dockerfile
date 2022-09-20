@@ -1,4 +1,4 @@
-FROM bitnami/pytorch
+FROM nvcr.io/nvidia/pytorch:19.08-py3
 #nvcr.io/nvidia/pytorch:19.08-py3
 #nvidia/cuda:10.1-cudnn7-runtime
 #nvcr.io/nvidia/pytorch:19.08-py3
@@ -17,7 +17,7 @@ RUN pip install --upgrade pip
 # RUN pip install pytorch==1.8.0 
 # RUN pip install torchvision
 # RUN pip install torchaudio 
-RUN pip install cudatoolkit=10.1
+#RUN pip install cudatoolkit=10.1
 RUN pip install numpy
 RUN pip install tqdm==4.58.0
 RUN pip install requests==2.25.1
