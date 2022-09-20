@@ -1,5 +1,5 @@
 from pathlib import Path
-from anlp_grading.utils import execute_cli_timeout, compare_outputs
+from utils import execute_cli_timeout, compare_outputs
 import os
 data_folder = Path('/mnt/data')
 student_folder = Path('/mnt/code')
