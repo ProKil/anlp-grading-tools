@@ -8,11 +8,7 @@ COPY . .
 # ARG GROUP_ID
 # RUN addgroup --gid $GROUP_ID user
 # RUN useradd -m $USER_ID
-
 #install pip
-RUN set -xe \
-    && apt-get update \
-    && apt-get install python3-pip
 RUN pip install --upgrade pip
 
 RUN pip install -e .
