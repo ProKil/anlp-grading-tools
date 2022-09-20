@@ -17,5 +17,16 @@ RUN pip install numpy
 # RUN mkdir -p /mnt/data && chown -R 777 /mnt/data
 # RUN mkdir -p /mnt/scores && chown -R 777 /mnt/scores
 # USER $USER_ID
+
+
+#Create conda environment
+ENV CONDA_DIR /opt/conda
+RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda.sh && /bin/bash ~/miniconda.sh -b -p /opt/conda
+#Put conda in path so we can use conda activate
+ENV PATH=$CONDA_DIR/bin:$PATH
+
+
+
+
 CMD ["/anlp_grading/test.py"]
 ENTRYPOINT ["python3"]
