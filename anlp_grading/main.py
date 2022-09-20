@@ -1,5 +1,5 @@
 import os
-from anlp_grading.utils import get_all_zip_files, parse_canvas_format
+from utils import get_all_zip_files, parse_canvas_format
 
 tmp_dir = os.environ['ANLP_TMP_DIR']
 if tmp_dir == "":
