@@ -18,7 +18,8 @@ RUN pip install --upgrade pip
 # RUN pip install torchvision
 # RUN pip install torchaudio 
 #RUN pip install cudatoolkit=10.1
-RUN pip install torch==1.9.0+cu111 -f https://download.pytorch.org/whl/torch_stable.html
+#RUN pip install torch==1.9.0+cu111 -f https://download.pytorch.org/whl/torch_stable.html
+RUN pip install torch==1.2
 RUN pip install numpy
 RUN pip install tqdm==4.58.0
 RUN pip install requests==2.25.1
