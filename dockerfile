@@ -1,4 +1,4 @@
-FROM nvcr.io/nvidia/pytorch:21.02-py3
+FROM nvcr.io/nvidia/pytorch:19.08-py3
 ADD anlp_grading /anlp_grading
 WORKDIR /usr/src/app
 COPY . .
