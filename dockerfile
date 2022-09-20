@@ -1,4 +1,5 @@
-FROM nvcr.io/nvidia/pytorch:19.08-py3
+FROM bitnami/pytorch
+#nvcr.io/nvidia/pytorch:19.08-py3
 #nvidia/cuda:10.1-cudnn7-runtime
 #nvcr.io/nvidia/pytorch:19.08-py3
 ADD anlp_grading /anlp_grading
@@ -11,8 +12,18 @@ COPY . .
 #install pip
 RUN pip install --upgrade pip
 
+
 RUN pip install -e .
+RUN pip install pytorch==1.8.0 torchvision torchaudio cudatoolkit=10.1 -c pytorch
 RUN pip install numpy
+RUN pip install tqdm==4.58.0
+RUN pip install requests==2.25.1
+RUN pip install importlib-metadata==3.7.0
+RUN pip install filelock==3.0.12
+RUN pip install sklearn==0.0
+RUN pip install tokenizers==0.10.1
+
+
 # RUN mkdir -p /mnt/code && chown -R 777 /mnt/code
 # RUN mkdir -p /mnt/data && chown -R 777 /mnt/data
 # RUN mkdir -p /mnt/scores && chown -R 777 /mnt/scores

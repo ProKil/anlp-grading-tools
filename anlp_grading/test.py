@@ -7,7 +7,7 @@ scores_folder = Path('/mnt/scores')
 
 print('Running setup.sh')
 
-execute_cli_timeout('cd /mnt/code && bash /mnt/code/setup.sh', timeout=1800)
+#execute_cli_timeout('cd /mnt/code ', timeout=1800)
 #execute_cli_timeout('cp /mnt/data/classifier_orig.py /mnt/code/classifier_orig.py', timeout=600)
 
 print('Running pretrain')
@@ -21,7 +21,11 @@ execute_cli_timeout(
     '--batch_size=64 '
     '--train=/mnt/data/sst-train.txt '
     '--dev=/mnt/data/sst-dev.txt '
-    '--test=/mnt/data/sst-test.txt ',
+    '--test=/mnt/data/sst-test.txt '
+    '--dev_out=/mnt/scores/sst-dev-output.txt '
+    '--test_out=/mnt/scores/sst-test-output.txt '
+    ,
+
     timeout=1800
 )
 
@@ -40,7 +44,10 @@ execute_cli_timeout(
     '--batch_size=64 '
     '--train=/mnt/data/sst-train.txt '
     '--dev=/mnt/data/sst-dev.txt '
-    '--test=/mnt/data/sst-test.txt ',
+    '--test=/mnt/data/sst-test.txt '
+    '--dev_out=/mnt/scores/sst-dev-output.txt '
+    '--test_out=/mnt/scores/sst-test-output.txt '
+    ,
     timeout=1800
 )
 
@@ -57,14 +64,17 @@ execute_cli_timeout(
     '--batch_size=8 '
     '--train=/mnt/data/cfimdb-train.txt '
     '--dev=/mnt/data/cfimdb-dev.txt '
-    '--test=/mnt/data/cfimdb-test.txt ',
+    '--test=/mnt/data/cfimdb-test.txt '
+    '--dev_out=/mnt/scores/cfimdb-dev-output.txt '
+    '--test_out=/mnt/scores/cfimdb-test-output.txt '
+    ,
     timeout=1800
 )
 
 
 print('Running cfimdb finetune')
 
-cfimdb_finetune_dev_acc = compare_outputs(std="/mnt/data/cfimdb-dev-output.txt", result="/mnt/scores/cfimdb-dev-output.txt")
+cfimdb_finetune_dev_acc = compare_outputs(std="/mnt/data/cfimdb-dev.txt", result="/mnt/scores/cfimdb-dev-output.txt")
 # cfimdb_pretain_test_acc = compare_outputs(std="/mnt/data/sst-test.txt", result="/usr/src/app/sst-test-output.txt")
 
 # execute_cli_timeout(
