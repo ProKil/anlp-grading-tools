@@ -14,7 +14,10 @@ RUN pip install --upgrade pip
 
 
 #RUN pip install -e .
-RUN pip install pytorch==1.8.0 torchvision torchaudio cudatoolkit=10.1 -c pytorch
+RUN pip install pytorch==1.8.0 
+RUN pip install torchvision
+RUN pip install torchaudio 
+RUN pip install cudatoolkit=10.1
 RUN pip install numpy
 RUN pip install tqdm==4.58.0
 RUN pip install requests==2.25.1
