@@ -27,22 +27,23 @@ execute_cli_timeout(
     'cd /mnt/code && '
     'python3 /mnt/code/classifier.py '
     '--option=pretrain '
-    '--epochs=10 '
+    '--epochs=1 '
     '--lr=1e-3 '
     '--use_gpu '
     '--batch_size=64 '
     '--train=/mnt/data/sst-train.txt '
     '--dev=/mnt/data/sst-dev.txt '
-    '--test=/mnt/data/sst-test.txt ',
-
+    '--test=/mnt/data/sst-test.txt '
+    '--dev_out=/mnt/scores/sst-dev-output.txt '
+    '--test_out=/mnt/scores/sst-test-output.txt ',
     timeout=4200
 )
 
 end = time.time()
 print("Time elapased" ,end - start)
 
-sst_pretrain_dev_acc = compare_outputs(std="/mnt/data/sst-dev.txt", result="/mnt/./sst-dev-output.txt")
-sst_pretrain_test_acc = compare_outputs(std="/mnt/data/sst-test.txt", result="/mnt/./sst-test-output.txt")
+sst_pretrain_dev_acc = compare_outputs(std="/mnt/data/sst-dev.txt", result="/mnt/scores/sst-dev-output.txt")
+sst_pretrain_test_acc = compare_outputs(std="/mnt/data/sst-test.txt", result="/mnt/scores/sst-test-output.txt")
 
 
 print('Running finetune')
