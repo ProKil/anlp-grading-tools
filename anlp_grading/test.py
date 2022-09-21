@@ -80,7 +80,7 @@ execute_cli_timeout(
     'cd /mnt/code && '
     'python3 /mnt/code/classifier.py '
     '--option=finetune '
-    '--epochs=10 '
+    '--epochs=1 '
     '--lr=1e-5 '
     '--use_gpu '
     '--batch_size=8 '
