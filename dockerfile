@@ -1,4 +1,4 @@
-FROM nvcr.io/nvidia/pytorch:19.08-py3
+FROM pytorch/pytorch:latest
 #nvidia/cuda:11.0.3-base-ubuntu20.04
 #nvidia/cudagl:10.2-devel-ubuntu18.04
 #nvcr.io/nvidia/pytorch:19.08-py3
