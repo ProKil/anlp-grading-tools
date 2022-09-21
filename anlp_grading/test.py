@@ -29,10 +29,7 @@ execute_cli_timeout(
     '--batch_size=64 '
     '--train=/mnt/data/sst-train.txt '
     '--dev=/mnt/data/sst-dev.txt '
-    '--test=/mnt/data/sst-test.txt '
-    '--dev_out=/mnt/scores/sst-dev-output.txt '
-    '--test_out=/mnt/scores/sst-test-output.txt '
-    ,
+    '--test=/mnt/data/sst-test.txt ',
 
     timeout=1800
 )
@@ -40,8 +37,8 @@ execute_cli_timeout(
 end = time.time()
 print("Time elapased" ,end - start)
 
-sst_pretrain_dev_acc = compare_outputs(std="/mnt/data/sst-dev.txt", result="/mnt/scores/sst-dev-output.txt")
-sst_pretrain_test_acc = compare_outputs(std="/mnt/data/sst-test.txt", result="/mnt/scores/sst-test-output.txt")
+sst_pretrain_dev_acc = compare_outputs(std="/mnt/data/sst-dev.txt", result="/mnt/./sst-dev-output.txt")
+sst_pretrain_test_acc = compare_outputs(std="/mnt/data/sst-test.txt", result="/mnt/./sst-test-output.txt")
 
 
 print('Running finetune')
@@ -58,9 +55,7 @@ execute_cli_timeout(
     '--batch_size=64 '
     '--train=/mnt/data/sst-train.txt '
     '--dev=/mnt/data/sst-dev.txt '
-    '--test=/mnt/data/sst-test.txt '
-    '--dev_out=/mnt/scores/sst-dev-output.txt '
-    '--test_out=/mnt/scores/sst-test-output.txt '
+    '--test=/mnt/data/sst-test.txt ',
     ,
     timeout=1800
 )
@@ -68,8 +63,8 @@ execute_cli_timeout(
 end = time.time()
 print("Time elapased" ,end - start)
 
-sst_finetune_dev_acc = compare_outputs(std="/mnt/data/sst-dev.txt", result="/mnt/scores/sst-dev-output.txt")
-sst_finetune_test_acc = compare_outputs(std="/mnt/data/sst-test.txt", result="/mnt/scores/sst-test-output.txt")
+sst_finetune_dev_acc = compare_outputs(std="/mnt/data/sst-dev.txt", result="/mnt/./sst-dev-output.txt")
+sst_finetune_test_acc = compare_outputs(std="/mnt/data/sst-test.txt", result="/mnt/./sst-test-output.txt")
 
 print('Running cfimdb finetune')
 start = time.time()
@@ -85,9 +80,7 @@ execute_cli_timeout(
     '--batch_size=8 '
     '--train=/mnt/data/cfimdb-train.txt '
     '--dev=/mnt/data/cfimdb-dev.txt '
-    '--test=/mnt/data/cfimdb-test.txt '
-    '--dev_out=/mnt/scores/cfimdb-dev-output.txt '
-    '--test_out=/mnt/scores/cfimdb-test-output.txt '
+    '--test=/mnt/data/cfimdb-test.txt ',
     ,
     timeout=1800
 )
@@ -95,7 +88,7 @@ execute_cli_timeout(
 end = time.time()
 print("Time elapased" ,end - start)
 
-cfimdb_finetune_dev_acc = compare_outputs(std="/mnt/data/cfimdb-dev.txt", result="/mnt/scores/cfimdb-dev-output.txt")
+cfimdb_finetune_dev_acc = compare_outputs(std="/mnt/data/cfimdb-dev.txt", result="/mnt/./cfimdb-dev-output.txt")
 # cfimdb_pretain_test_acc = compare_outputs(std="/mnt/data/sst-test.txt", result="/usr/src/app/sst-test-output.txt")
 
 # execute_cli_timeout(
