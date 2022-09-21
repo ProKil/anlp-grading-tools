@@ -95,7 +95,7 @@ execute_cli_timeout(
 end = time.time()
 print("Time elapased" ,end - start)
 
-cfimdb_finetune_dev_acc = compare_outputs(std="/mnt/data/cfimdb-dev.txt", result="/mnt/./cfimdb-dev-output.txt")
+cfimdb_finetune_dev_acc = compare_outputs(std="/mnt/data/cfimdb-dev.txt", result="/mnt/scores/cfimdb-dev-output.txt")
 # cfimdb_pretain_test_acc = compare_outputs(std="/mnt/data/sst-test.txt", result="/usr/src/app/sst-test-output.txt")
 
 # execute_cli_timeout(
