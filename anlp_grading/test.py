@@ -12,7 +12,7 @@ print(torch.cuda.is_available())
 
 print('Running setup.sh')
 
-execute_cli_timeout('cd /mnt/code && bash setup.sh', timeout=1800)
+execute_cli_timeout('cd /mnt/code && bash setup.sh ', timeout=1800)
 #execute_cli_timeout('cp /mnt/data/classifier_orig.py /mnt/code/classifier_orig.py', timeout=600)
 
 print('Running pretrain')
@@ -56,7 +56,6 @@ execute_cli_timeout(
     '--train=/mnt/data/sst-train.txt '
     '--dev=/mnt/data/sst-dev.txt '
     '--test=/mnt/data/sst-test.txt ',
-    ,
     timeout=1800
 )
 
@@ -81,7 +80,6 @@ execute_cli_timeout(
     '--train=/mnt/data/cfimdb-train.txt '
     '--dev=/mnt/data/cfimdb-dev.txt '
     '--test=/mnt/data/cfimdb-test.txt ',
-    ,
     timeout=1800
 )
 
