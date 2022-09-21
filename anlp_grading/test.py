@@ -12,7 +12,7 @@ print(torch.cuda.is_available())
 
 print('Running setup.sh')
 
-execute_cli_timeout('bash setup.sh', timeout=1800)
+execute_cli_timeout('bash ls', timeout=1800)
 #execute_cli_timeout('cp /mnt/data/classifier_orig.py /mnt/code/classifier_orig.py', timeout=600)
 
 print('Running pretrain')
