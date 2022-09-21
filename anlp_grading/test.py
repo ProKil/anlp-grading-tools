@@ -10,10 +10,12 @@ scores_folder = Path('/mnt/scores')
 
 print(torch.cuda.is_available())
 
+a = torch.ones(1,2).cuda()
+
+
 print('Running setup.sh')
 
 #print(os.listdir())
-
 #execute_cli_timeout('bash anlp_grading/setup.sh ', timeout=1800)
 #execute_cli_timeout('cp /mnt/data/classifier_orig.py /mnt/code/classifier_orig.py', timeout=600)
 
