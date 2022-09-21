@@ -8,21 +8,6 @@ student_folder = Path('/mnt/code')
 scores_folder = Path('/mnt/scores')
 
 
-print(torch.cuda.is_available())
-
-a = torch.ones(1,2).cuda()
-
-
-print('Running setup.sh')
-
-#print(os.listdir())
-#execute_cli_timeout('bash anlp_grading/setup.sh ', timeout=1800)
-#execute_cli_timeout('cp /mnt/data/classifier_orig.py /mnt/code/classifier_orig.py', timeout=600)
-
-print('Running pretrain')
-
-start = time.time()
-
 execute_cli_timeout(
     'cd /mnt/code && '
     'python3 /mnt/code/classifier.py '
@@ -39,16 +24,11 @@ execute_cli_timeout(
     timeout=4200
 )
 
-end = time.time()
-print("Time elapased" ,end - start)
-
 sst_pretrain_dev_acc = compare_outputs(std="/mnt/data/sst-dev.txt", result="/mnt/scores/sst-dev-output.txt")
 sst_pretrain_test_acc = compare_outputs(std="/mnt/data/sst-test.txt", result="/mnt/scores/sst-test-output.txt")
 
-
-print('Running finetune')
-
-start = time.time()
+print('sst pretrain dev accuracy ',sst_pretrain_dev_acc)
+print('sst pretrain test accuracy ', sst_pretrain_test_acc)
 
 execute_cli_timeout(
     'cd /mnt/code && '
@@ -66,14 +46,12 @@ execute_cli_timeout(
     timeout=4200
 )
 
-end = time.time()
-print("Time elapased" ,end - start)
-
 sst_finetune_dev_acc = compare_outputs(std="/mnt/data/sst-dev.txt", result="/mnt/scores/sst-dev-output.txt")
 sst_finetune_test_acc = compare_outputs(std="/mnt/data/sst-test.txt", result="/mnt/scores/sst-test-output.txt")
 
-print('Running cfimdb finetune')
-start = time.time()
+print('sst finetune dev accuracy ',sst_finetune_dev_acc)
+print('sst finetune test accuracy ', sst_finetune_test_acc)
+
 
 #sst_acc_orig = compare_outputs(std="/mnt/data/sst-test.txt", result="/usr/src/app/sst-test-output-orig.txt")
 execute_cli_timeout(
@@ -92,10 +70,11 @@ execute_cli_timeout(
     timeout=4200
 )
 
-end = time.time()
-print("Time elapased" ,end - start)
-
 cfimdb_finetune_dev_acc = compare_outputs(std="/mnt/data/cfimdb-dev.txt", result="/mnt/scores/cfimdb-dev-output.txt")
+
+print('cfimdb finetune dev accuracy ',cfimdb_finetune_dev_acc)
+
+
 # cfimdb_pretain_test_acc = compare_outputs(std="/mnt/data/sst-test.txt", result="/usr/src/app/sst-test-output.txt")
 
 # execute_cli_timeout(
