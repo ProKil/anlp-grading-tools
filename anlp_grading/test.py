@@ -21,7 +21,7 @@ execute_cli_timeout(
     '--test=/mnt/data/sst-test.txt '
     '--dev_out=/mnt/scores/sst-dev-output.txt '
     '--test_out=/mnt/scores/sst-test-output.txt ',
-    timeout=4200
+    timeout=4500
 )
 
 sst_pretrain_dev_acc = compare_outputs(std="/mnt/data/sst-dev.txt", result="/mnt/scores/sst-dev-output.txt")
@@ -43,7 +43,7 @@ execute_cli_timeout(
     '--test=/mnt/data/sst-test.txt '
     '--dev_out=/mnt/scores/sst-dev-output.txt '
     '--test_out=/mnt/scores/sst-test-output.txt ',
-    timeout=4200
+    timeout=8100
 )
 
 sst_finetune_dev_acc = compare_outputs(std="/mnt/data/sst-dev.txt", result="/mnt/scores/sst-dev-output.txt")
@@ -67,7 +67,7 @@ execute_cli_timeout(
     '--test=/mnt/data/cfimdb-test.txt '
     '--dev=/mnt/data/cfimdb-dev.txt  '
     '--dev_out=/mnt/scores/cfimdb-dev-output.txt ',
-    timeout=4200
+    timeout=12600
 )
 
 cfimdb_finetune_dev_acc = compare_outputs(std="/mnt/data/cfimdb-dev.txt", result="/mnt/scores/cfimdb-dev-output.txt")
