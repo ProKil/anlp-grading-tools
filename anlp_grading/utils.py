@@ -59,7 +59,7 @@ def compare_outputs(std, result):
         result_lines = open(result).readlines()
         for idx, line1 in enumerate(open(std)):
             expected = line1.split('|||')[0].strip()
-            predicted = result_lines[idx].split('|||')[2].strip()
+            predicted = result_lines[idx].split('|||')[0].strip()
             same.append(1 if predicted == expected else 0)
         return sum(same) / len(same)
     except Exception as e:
