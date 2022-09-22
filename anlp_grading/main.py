@@ -1,5 +1,5 @@
 import os
-from anlp_grading.utils import get_all_zip_files, parse_canvas_format
+from utils import get_all_zip_files, parse_canvas_format
 
 tmp_dir = os.environ['ANLP_TMP_DIR']
 if tmp_dir == "":
@@ -22,6 +22,8 @@ if scores_dir == "":
     exit(1)
 
 files = get_all_zip_files(submission_dir)
+
+
 parse_canvas_format(files)
 
 for f in files:
@@ -31,6 +33,6 @@ for f in files:
     os.system(f"unzip -o {f.absolute()} -d {tmp_dir}")
     new_folder = f"{tmp_dir}/{andrewid}"
     # run docker mounted code and data
-    os.system(f"docker run -v {new_folder}:/mnt/code -v {data_dir}:/mnt/data -v {scores_dir}:/mnt/scores -e ANDREW_ID={andrewid} -it anlp")
+    os.system(f"docker run --gpus all -v {new_folder}:/mnt/code -v {data_dir}:/mnt/data -v {scores_dir}:/mnt/scores -e ANDREW_ID={andrewid} -it anlp")
     # remove the folder
     os.system(f"rm -rf {new_folder}")

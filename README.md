@@ -22,19 +22,18 @@ To evaluate your code, you'll need to change the environment variables in test.s
 
 `SCORES_DIR`: this should point to an empty folder. Your score will be logged in a text file there. 
 
-`DATA_DIR`: this should point to the data folder of `minnn-assignment`. Please copy the original `minnn-assignment/classifier.py` to `minnn-assignment/data/classifier_orig.py` to test if your code can be executed with the original classifier. 
+`DATA_DIR`: this should point to the data folder of `minbert-assignment`.
 
 Example code to prepare the folders:
 ```
 mkdir tmp
 mkdir scores
-cp -r path/to/minnn-assignment/data ./
-cp path/to/minnn-assignment/classifier.py data/classifier_orig.py
+cp -r path/to/minbert-assignment/data ./
 mkdir submission
 cp your/submission.zip submission
 ```
 
-Now you can evaluate your code through `bash test.sh`, after which your scores are at `SCORES_DIR/andrewid`. It is normal to get 0s for the last two (correct labels for the imdb test set are not available), but you should get reasonable accuracies for the first two (~40).
+Now you can evaluate your code through `bash test.sh`, after which your scores are at `SCORES_DIR/andrewid`. 
 
 ## Troubleshooting
 
